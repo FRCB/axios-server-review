@@ -8,11 +8,11 @@ app.use(bodyParser.json())
 
 
 //Endpoints fo there
-app.get('/api/getFriends', ctrl.friendGetter);
+app.get(`/api/getFriends`, ctrl.friendGetter);
 
-app.post('/api/addFriend', ctrl.friendAdder);
+app.post(`/api/addFriend`, ctrl.friendAdder);
 
-app.delete('/api/deleteFriend/:id', ctrl.friendDeleter)
+app.delete(`/api/deleteFriend/:id`, ctrl.friendDeleter)
 
 // app.put('/api/editFriend/:id', ctrl.friendUpdater)
 

@@ -4,7 +4,6 @@ let friends = [{ id: 0, name: 'Sean', food: 'Tacos' },
 
 let id = 3
 
-
 module.exports = {
     friendGetter: (req, res) => {
         res.status(200).send(friends)

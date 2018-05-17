@@ -17,17 +17,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/getFriends').then(res => {
-      console.log(res.data)
+    axios.get(`/api/getFriends`).then(res => {
       this.setState({ friends: res.data })
     })
   }
 
   addFriend() {
-    axios.post('/api/addFriend', { name: this.state.nameInput, food: this.state.foodInput }).then(res => {
+    axios.post(`/api/addFriend`, { name: this.state.nameInput, food: this.state.foodInput }).then(res => {
       this.setState({ friends: res.data, nameInput: '', foodInput: '' })
     })
-
   }
 
   deleteFriend(id) {
