@@ -10,29 +10,35 @@ class App extends Component {
     this.state = {
       friends: [],
       nameInput: '',
-      foodInput: ''
+      foodInput: '',
+    // newName: '',
+    // newFood: ''
     }
   }
 
   componentDidMount() {
     axios.get('/api/getFriends').then(res => {
+      console.log(res.data)
       this.setState({ friends: res.data })
     })
   }
 
   addFriend() {
-    axios.post('/api/addFriend', {name: this.state.nameInput, food: this.state.foodInput}).then(res => {
-      this.setState({ friends: res.data, nameInput: '', foodInput: ''})
+    axios.post('/api/addFriend', { name: this.state.nameInput, food: this.state.foodInput }).then(res => {
+      this.setState({ friends: res.data, nameInput: '', foodInput: '' })
     })
 
   }
 
   deleteFriend(id) {
-    console.log(id)
     axios.delete(`/api/deleteFriend/${id}`).then(res => {
-      this.setState({friends: res.data})
+      this.setState({ friends: res.data })
     })
-  } 
+  }
+
+  // editFriend(id) {
+  //   axios.put(`/api/editFriend/${id}`), {name: this.state.newName, food: this.state.newFood})
+  // }
 
   render() {
     console.log(this.state)
@@ -54,9 +60,9 @@ class App extends Component {
         </header>
         <h1>Add Friends</h1>
         <p>Name</p>
-        <input onChange={e => this.setState({nameInput: e.target.value})}/>
+        <input onChange={e => this.setState({ nameInput: e.target.value })} />
         <p>Food</p>
-        <input onChange={e => this.setState({foodInput: e.target.value})}/>
+        <input onChange={e => this.setState({ foodInput: e.target.value })} />
         <br /><br />
         <button onClick={() => this.addFriend()}>Add</button>
         <div> <hr />
